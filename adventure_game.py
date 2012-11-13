@@ -49,11 +49,14 @@ class Player:
 		del self.inventory[index]
 	
 	def displayInventory(self):
-		i = 0
-		print "Your inventory:"
-		for item in self.inventory:
-			print str(i) + ": " + item.name
-			i += 1
+		if len(self.inventory) > 0 :
+			i = 0
+			print "Your inventory:"
+			for item in self.inventory:
+				print str(i) + ": " + item.name
+				i += 1
+		else :
+			print "You are not carrying anything"
 	
 	def displayStatus(self):
 		print "Level: " + str(self.level)
@@ -71,11 +74,12 @@ class Output:
 player = Player()
 output = Output()
 
-while(True):
-	userInput = raw_input("Please enter a command:")
-	userInput = userInput.split()
+while True:
+	userInputo = raw_input("Please enter a command:").lower()
+	userInput = userInputo.split()
 
-	if userInput[0] == 'inventory' or userInput[0] == 'i':
+	if userInputo == "" : pass
+	elif userInput[0] == 'inventory' or userInput[0] == 'i':
 		player.displayInventory()
 	elif userInput[0] == 'status' or userInput[0] == 's':
 		player.displayStatus()
