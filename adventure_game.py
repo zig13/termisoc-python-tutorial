@@ -29,11 +29,14 @@ class Poison(Consumable):
 	def consume(self, player):
 		player.health -= 1
 
+class Vial(Consumable):
+	pass
+
 class Player:
 	level = 1
 	health = 10
 
-	area = Area("Test", [Potion("Test Potion"), Poison("Test Poison")])
+	area = Area("Test", [Potion("Test Potion"), Poison("Test Poison"), Vial("Vial of stuff")])
 	inventory = []
 
 	def pickupItem(self, index):
@@ -84,6 +87,8 @@ while(True):
 	elif userInput[0] == 'use' or userInput[0] == 'u':
 		try:
 			player.useItem(int(userInput[1]))
+			print "Your health is now %s" %(player.health)
+			print "Your level is now %s" %(player.level)
 		except:	
 			print "That item doesn't exist!"
 	elif userInput[0] == 'look' or userInput[0] == 'l':
